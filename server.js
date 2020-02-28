@@ -49,15 +49,17 @@ var reserverdTables = [
 var waitlist = []
 
 app.get("/api/reservedTables", (req, res) => {
-    return res.json(reservedTables);
-})
 
-app.get("api/waitlist", (req, res) => {
-    return res.json(waitlist);
-})
+    app.get("/api/tables", (req, res) => {
+        return res.json(reservedTables);
+    })
 
-// Starts the server to begin listening
-// =============================================================
-app.listen(PORT, () => {
-    console.log("App listening on PORT " + PORT);
-});
+    app.get("api/waitlist", (req, res) => {
+        return res.json(waitlist);
+    })
+
+    // Starts the server to begin listening
+    // =============================================================
+    app.listen(PORT, () => {
+        console.log("App listening on PORT " + PORT);
+    });
