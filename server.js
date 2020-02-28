@@ -51,9 +51,15 @@ var waitlist = []
 app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "homepage.html"));
   });
-  app.get("/waitlist.html", (req, res) => {
-    res.sendFile(path.join(__dirname, "waitlist.html"));
+  app.get("/homepage.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "homepage.html"));
   });
+app.get("/waitlist.html", (req, res) => {
+res.sendFile(path.join(__dirname, "waitlist.html"));
+});
+app.get("/reservation.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "reservation.html"));
+    });
 
 app.get("/api/tables" , (req,res) =>
 {
@@ -64,6 +70,24 @@ app.get("api/waitlist" , (req, res) =>
 {
     return res.json(waitlist);
 })
+
+if(reserverdTables.length > 5)
+{
+app.post("api/tables", function(req,res)
+{
+    var newTable = req.body;
+    waitlist.push(newTable);
+    res.json(newTable);
+})
+}
+else{
+app.post("api/reserverdTables", function(req,res)
+{
+    var newTable = req.body;
+    reserverdTables.push(newTable);
+    res.json(newTable);
+})
+}
 
 // Starts the server to begin listening
 // =============================================================
