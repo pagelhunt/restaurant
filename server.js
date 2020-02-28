@@ -48,7 +48,8 @@ var reserverdTables =[
 
 var waitlist = []
 
-app.get("/api/reservedTables" , (req,res) =>
+
+app.get("/api/tables" , (req,res) =>
 {
     return res.json(reservedTables);
 })
