@@ -48,10 +48,16 @@ var reserverdTables =[
 
 var waitlist = []
 
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "homepage.html"));
+  });
+  app.get("/waitlist.html", (req, res) => {
+    res.sendFile(path.join(__dirname, "waitlist.html"));
+  });
 
 app.get("/api/tables" , (req,res) =>
 {
-    return res.json(reservedTables);
+    return res.json(reserverdTables);
 })
 
 app.get("api/waitlist" , (req, res) =>
