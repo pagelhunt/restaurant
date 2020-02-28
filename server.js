@@ -69,20 +69,20 @@ app.get("api/waitlist", (req, res) => {
     return res.json(waitlist);
 })
 
-if (reserverdTables.length > 5) {
-    app.post("api/tables", function (req, res) {
-        var newTable = req.body;
-        waitlist.push(newTable);
-        res.json(newTable);
-    })
-}
-else {
-    app.post("api/reserverdTables", function (req, res) {
-        var newTable = req.body;
-        reserverdTables.push(newTable);
-        res.json(newTable);
-    })
-}
+// if (reserverdTables.length > 5) {
+app.post("/api/tables", function (req, res) {
+    var newTable = req.body;
+    waitlist.push(newTable);
+    res.json(newTable);
+})
+// }
+// else {
+//     app.post("api/reserverdTables", function (req, res) {
+//         var newTable = req.body;
+//         reserverdTables.push(newTable);
+//         res.json(newTable);
+//     })
+// 
 
 // Starts the server to begin listening
 // =============================================================
